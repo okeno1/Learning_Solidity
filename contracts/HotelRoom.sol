@@ -2,27 +2,37 @@
 pragma solidity ^0.8.0;
 
 contract HotelRoom{
-    //vacant
-    //occupied
 
-    enum Statuses {Vacant, Occupied};
-    Statuses currentStatus;
+    enum Statuses {Vacant, Occupied}
+    Statuses public currentStatus;
+
+    event Occupy(address _occupant, uint _value);
 
     address payable public owner;
 
     constructor(){
-        owner = msg.sender;
+        owner = payable(msg.sender);
         currentStatus = Statuses.Vacant;
     }
 
     modifier onlyWhileVacant{
         require(currentStatus == Statuses.Vacant, "Currently Occupied.");
+        _;
     }
 
-    function book() payable {
-        require(msg.value >= 2 ether,"Not enough Ether Provided.");  
+    modifier costs(uint _amount){
+        require(msg.value >= _amount,"Not enough Ether Provided.");
+        _;
+    }
+
+
+    function book() payable public onlyWhileVacant costs(2 ether){ 
         currentStatus = Statuses.Occupied;
-        owner.transfer(msg.value);
+        
+        (bool sent, bytes memory data) = owner.call{value: msg.value}("");
+        require(true);
+
+        emit Occupy(msg.sender, msg.value);
     }
 
 }

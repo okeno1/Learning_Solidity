@@ -4,7 +4,65 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [],
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_occupant",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "Occupy",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "book",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "currentStatus",
+				"outputs": [
+					{
+						"internalType": "enum HotelRoom.Statuses",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -33,11 +91,11 @@
 	},
 	"sources": {
 		"contracts/HotelRoom.sol": {
-			"keccak256": "0x1b78873c76b1978788d269e390b3d2c3f7121944606df5b74d5fb462880c343a",
+			"keccak256": "0x944f87a12b3e2020fbdec2cdde9870ca12121736d28cb07f2c5fddb724189c18",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0800d967fc4c150f2ad39a28614aa0f44d6f8040187ec92a383718c311bc11d4",
-				"dweb:/ipfs/Qmf3JdgBNhPsYcnf9pYSw3wbpKmde6Dvqq2X5pLnhuYe4m"
+				"bzz-raw://9661458d2cb28c2ec6db6d5e5f1b9d8323315e40c430fe6f3fa6f314f93e5414",
+				"dweb:/ipfs/QmUWPURnkbTT2mKWhizZ1qFNbV5NtqGXQdcmPqtz88KNka"
 			]
 		}
 	},
