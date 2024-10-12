@@ -2,11 +2,11 @@
 pragma solidity ^0.8.0;
 
 contract HotelRoom{
-    //vacant
-    //occupied
 
     enum Statuses {Vacant, Occupied};
     Statuses currentStatus;
+
+    event Occupy(address _occupant, uint _value);
 
     address payable public owner;
 
@@ -20,10 +20,17 @@ contract HotelRoom{
         _;
     }
 
-    function book() payable onlyWhileVacant {
-        require(msg.value >= 2 ether,"Not enough Ether Provided.");  
+    modifier costs(uint _amount){
+        require(msg.value >= _amount,"Not enough Ether Provided.");
+        _;
+    }
+
+
+    function book() payable onlyWhileVacant costs(2 ether){ 
         currentStatus = Statuses.Occupied;
         owner.transfer(msg.value);
+
+        emit Occupy(msg.sender, msg.value);
     }
 
 }
